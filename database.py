@@ -9,5 +9,5 @@ def insert_to_db(data) :
   cur = con.cursor()
   query = "INSERT INTO `chi` ( `sign_at`, `tx_hash`, `address`, `typed`, `chain`, `spent_gas`, `total_chi`) VALUES (%s,%s,%s,%s,%s,%s,%s)"
   cur.executemany(query, data)
-  cur.commit()
+  con.commit()
   con.close()
