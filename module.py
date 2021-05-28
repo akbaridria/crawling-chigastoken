@@ -70,6 +70,7 @@ class Module:
         results.append((sign_at, tx_hash, address, typed, chain, spent_gas, total_chi))
         count +=1
         if count == 100 :
+          print("oke gan")
           database.insert_to_db(results)
           deleted = True
           count = 1
