@@ -35,8 +35,6 @@ class Module:
     return r
 
   def process_data_eth(self, data, chain_id) :
-    con = database.connect_to_database()
-    cur = con.cursor()
     results = []
     count = 1
     deleted = False
@@ -72,7 +70,7 @@ class Module:
         results.append((sign_at, tx_hash, address, typed, chain, spent_gas, total_chi))
         count +=1
         if count == 100 :
-          database.insert_to_db(cur, results)
+          database.insert_to_db(results)
           deleted = True
           count = 1
       except Exception as e : 
