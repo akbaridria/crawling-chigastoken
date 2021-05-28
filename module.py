@@ -38,6 +38,7 @@ class Module:
     results = []
     count = 1
     deleted = False
+    print('start again!')
     for i in data['data']['items'] :
       try :
         if deleted :
