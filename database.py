@@ -7,7 +7,7 @@ def connect_to_database() :
 def insert_to_db(data) :
   con = connect_to_database()
   cur = con.cursor()
-  query = "INSERT INTO `chi` ( `sign_at`, `tx_hash`, `address`, `typed `, `chain`, `spent_gas`, `total_chi`) VALUES (%s,%s,%s,%s,%s,%s,%s)"
+  query = "INSERT INTO `chi` ( `sign_at`, `tx_hash`, `address`, `typed`, `chain`, `spent_gas`, `total_chi`) VALUES (%s,%s,%s,%s,%s,%s,%s)"
   cur.executemany(query, data)
   cur.commit()
   con.close()
