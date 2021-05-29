@@ -27,5 +27,5 @@ while True:
   data_eth = get_chi_eth(1, count)
   time.sleep(60)
   print("done")
-  break
+  count = count +1
   
