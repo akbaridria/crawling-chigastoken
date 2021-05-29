@@ -10,7 +10,12 @@ def get_chi_eth(chain_id, count) :
   temp_date = m.get_date_eth(count+2)
   if start_date < datetime.date.today() :
     start_block, end_block = m.get_block_eth(start_date, end_date, temp_date, chain_id)
-    data_eth = m.call_api_eth(start_block, end_block, chain_id)
+    while True :
+      try :
+        data_eth = m.call_api_eth(start_block, end_block, chain_id)
+        break
+      except Exception as e :
+        print(e)
     to_database = m.process_data_eth(data_eth, chain_id)
   else :
     to_database = []
@@ -21,5 +26,5 @@ while True:
   data_bsc = get_chi_eth(56, count)
   data_eth = get_chi_eth(1, count)
   count+=1
-  time.sleep(300)
+  time.sleep(60)
   
