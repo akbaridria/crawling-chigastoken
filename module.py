@@ -36,14 +36,9 @@ class Module:
 
   def process_data_eth(self, data, chain_id) :
     results = []
-    count = 1
-    deleted = False
     print('start again!')
     for i in data['data']['items'] :
       try :
-        if deleted :
-          results = []
-          deleted = False
         tx_hash = i['tx_hash']
         test_start = i['decoded']['params'][0]['value']
         test_end = i['decoded']['params'][1]['value']
@@ -69,12 +64,6 @@ class Module:
           chain = chain_id
           total_chi = i['decoded']['params'][2]['value']
         results.append((sign_at, tx_hash, address, typed, chain, spent_gas, total_chi))
-        count +=1
-        if count == 500 :
-          print("oke gan")
-          database.insert_to_db(results)
-          deleted = True
-          count = 1
       except Exception as e : 
         print(e)
     if len(results) != 0 :
