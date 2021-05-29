@@ -27,5 +27,6 @@ while True:
   data_eth = get_chi_eth(1, count)
   count+=1
   time.sleep(60)
+  print("done")
   break
   
