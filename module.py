@@ -70,7 +70,7 @@ class Module:
           total_chi = i['decoded']['params'][2]['value']
         results.append((sign_at, tx_hash, address, typed, chain, spent_gas, total_chi))
         count +=1
-        if count == 100 :
+        if count == 500 :
           print("oke gan")
           database.insert_to_db(results)
           deleted = True
