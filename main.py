@@ -20,6 +20,6 @@ count = 0
 while True:
   data_bsc = get_chi_eth(56, count)
   data_eth = get_chi_eth(1, count)
-  
+  count+=1
   time.sleep(300)
   

@@ -77,6 +77,9 @@ class Module:
           count = 1
       except Exception as e : 
         print(e)
+    if len(results) != 0 :
+      print('oke gan')
+      database.insert_to_db(results)
     return results
 
 
