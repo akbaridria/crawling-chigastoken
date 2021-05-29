@@ -10,7 +10,7 @@ class Module:
     self.chain_bsc = 56
     self.contract_address = "0x0000000000004946c0e9F43F4Dee607b0eF1fA1c"
     self.page_size = 999999
-    self.day = 15
+    self.day = 21
     self.month = 3
     self.year = 2021
     self.id = "0x0000000000000000000000000000000000000000"
@@ -70,7 +70,7 @@ class Module:
           total_chi = i['decoded']['params'][2]['value']
         results.append((sign_at, tx_hash, address, typed, chain, spent_gas, total_chi))
         count +=1
-        if count == 100 :
+        if count == 200 :
           print("oke gan")
           database.insert_to_db(results)
           deleted = True
