@@ -14,23 +14,24 @@ class Module:
     self.month = 4
     self.year = 2021
     self.id = "0x0000000000000000000000000000000000000000"
+    self.API_KEY = 'ckey_4e7ba38c8e50410a92ed0989d8f'
 
   def get_date_eth(self, count) :
     date = datetime.date(self.year, self.month, self.day) + datetime.timedelta(days=count)
     return date
   
   def get_block_eth(self, start_date, end_date, temp_date, chain_id) :
-    url = self.base + "{}/block_v2/{}/{}/".format(chain_id, start_date, end_date)
+    url = self.base + "{}/block_v2/{}/{}/?key={}".format(chain_id, start_date, end_date, self.API_KEY)
     r = requests.get(url).json()
     start_block = r['data']['items'][0]['height']
-    url = self.base + "{}/block_v2/{}/{}/".format(chain_id, end_date, temp_date)
+    url = self.base + "{}/block_v2/{}/{}/?key={}".format(chain_id, end_date, temp_date, self.API_KEY)
     r = requests.get(url).json()
     end_block = r['data']['items'][0]['height']
     return start_block, end_block
 
   def call_api_eth(self, start_block, end_block, chain_id) :
     url = self.base + '{}/events/address/{}/?match={{decoded.name : Transfer}}'.format(chain_id, self.contract_address)
-    payload = {"page-size" : self.page_size, "starting-block" : start_block, "ending-block" : end_block}
+    payload = {"page-size" : self.page_size, "starting-block" : start_block, "ending-block" : end_block, "key" : self.API_KEY}
     r = requests.get(url, params=payload).json()
     return r
 
@@ -47,7 +48,7 @@ class Module:
         tx_hash = i['tx_hash']
         test_start = i['decoded']['params'][0]['value']
         test_end = i['decoded']['params'][1]['value']
-        url = self.base + "{}/transaction_v2/{}/".format(chain_id, tx_hash)
+        url = self.base + "{}/transaction_v2/{}/?key={}".format(chain_id, tx_hash, self.API_KEY)
         r = requests.get(url).json()
         spent_gas = r['data']['items'][0]['gas_quote']
         if self.id == test_start :
