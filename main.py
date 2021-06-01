@@ -24,7 +24,7 @@ def get_chi_eth(chain_id, count) :
 count = 0
 while True:
   data_bsc = get_chi_eth(56, count)
-  data_eth = get_chi_eth(1, count)
+#   data_eth = get_chi_eth(1, count)
   time.sleep(60)
   print("done")
   count = count +1
