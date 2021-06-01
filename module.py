@@ -10,8 +10,8 @@ class Module:
     self.chain_bsc = 56
     self.contract_address = "0x0000000000004946c0e9F43F4Dee607b0eF1fA1c"
     self.page_size = 999999
-    self.day = 28
-    self.month = 3
+    self.day = 3
+    self.month = 4
     self.year = 2021
     self.id = "0x0000000000000000000000000000000000000000"
 
